@@ -6,7 +6,7 @@ A modern, responsive, and high-performance **Movie Discovery Web Application** b
 
 ## 🌐 Live Demo
 
-🚀 https://movie-search-frontend-one.vercel.app
+🚀 https://movie-search-frontend-86mf.vercel.app/
 
 ---
 
