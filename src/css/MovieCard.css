@@ -1,13 +1,28 @@
+/* ============================= */
 /* ===== TRAILER MODAL ===== */
+/* ============================= */
 
 .trailer-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
+
+  /* Smooth fade animation */
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .trailer-content {
@@ -15,6 +30,23 @@
   width: 80%;
   max-width: 900px;
   aspect-ratio: 16 / 9;
+  background: black;
+  border-radius: 12px;
+  overflow: hidden;
+
+  /* Smooth zoom animation */
+  animation: zoomIn 0.3s ease forwards;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .trailer-content iframe {
@@ -32,30 +64,72 @@
   color: white;
   font-size: 24px;
   cursor: pointer;
+  transition: transform 0.2s ease;
 }
+
+.close-btn:hover {
+  transform: scale(1.2);
+}
+
+
+/* ============================= */
+/* ===== MOVIE CARD ===== */
+/* ============================= */
+
 .movie-card {
-  background: #1c1c1c;
+  background: #ffffff;
   border-radius: 12px;
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
   display: flex;
   flex-direction: column;
-  height: 100%;
+
+  height: auto;          /* ✅ important */
 }
 
 
+html[data-theme="dark"] .movie-card {
+  background: #1e1e1e;
+  border: 1px solid #2a2a2a;
+}
+
+
+/* Netflix hover lift effect */
 .movie-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px) scale(1.02);
+  z-index: 10;
 }
-.movie-poster img {
-  width: 100%;
-  height: 360px;       
-  object-fit: cover;   
-}
+
+
+/* ============================= */
+/* ===== POSTER ===== */
+/* ============================= */
 
 .movie-poster {
   position: relative;
   cursor: pointer;
+  overflow: hidden;
+  aspect-ratio: 2 / 3;   /* ✅ poster controls height */
 }
+
+.movie-poster img {
+  width: 100%;
+  height: 100%;          /* ✅ fill container */
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+
+.movie-card:hover .movie-poster img {
+  transform: scale(1.08);
+}
+
+
+/* ============================= */
+/* ===== FAVORITE BUTTON ===== */
+/* ============================= */
 
 .movie-overlay {
   position: absolute;
@@ -66,16 +140,27 @@
 
 .favorite-btn {
   pointer-events: auto;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   border: none;
   border-radius: 50%;
   font-size: 18px;
   padding: 6px;
   cursor: pointer;
+  transition: transform 0.2s ease;
 }
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+}
+
+
+/* ============================= */
+/* ===== MOVIE INFO ===== */
+/* ============================= */
+
 .movie-info {
-  padding: 10px;
-  min-height: 70px;     /* fixed space for title + year */
+  padding: 12px;
+  min-height: 70px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -83,12 +168,30 @@
 
 .movie-info h3 {
   font-size: 15px;
-  line-height: 1.2;
+  line-height: 1.3;
   margin: 0;
-  
+  color: inherit;
+
   display: -webkit-box;
-  -webkit-line-clamp: 2; 
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
+.movie-info p {
+  margin: 6px 0 0 0;
+  font-size: 13px;
+  opacity: 0.8;
+  color: inherit;
+}
+/* ============================= */
+/* ===== DARK MODE TEXT FIX ===== */
+/* ============================= */
+
+html[data-theme="dark"] .movie-info h3 {
+  color: #ffffff;   /* Movie Name */
+}
+
+html[data-theme="dark"] .movie-info p {
+  color: #cccccc;   /* Year */
+}
