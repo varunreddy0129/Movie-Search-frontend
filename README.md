@@ -30,7 +30,8 @@ The **Movie Search Platform** provides a seamless movie discovery experience by 
 ---
 
 ### 📱 Favorites View
-<img width="1913" height="895" alt="image" src="https://github.com/user-attachments/assets/88b1c765-afd0-4c15-8da5-ac90c8ffb06c" />
+<img width="1913" height="872" alt="image" src="https://github.com/user-attachments/assets/06e78a45-d013-4de5-9b11-5e12537efc65" />
+
 
 ---
 
